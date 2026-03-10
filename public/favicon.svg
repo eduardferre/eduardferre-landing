@@ -1,4 +1,72 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="none">
-  <rect width="32" height="32" rx="8" fill="#07070A"/>
-  <text x="5" y="23" font-family="monospace" font-size="20" font-weight="bold" fill="#C8FF40">E</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <defs>
+    <!-- Background gradient: dark navy -->
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1" gradientUnits="objectBoundingBox">
+      <stop offset="0%" stop-color="#1e293b"/>
+      <stop offset="100%" stop-color="#0b1120"/>
+    </linearGradient>
+
+    <!-- Blue gradient for bars -->
+    <linearGradient id="blue" x1="0" y1="1" x2="1" y2="0" gradientUnits="objectBoundingBox">
+      <stop offset="0%" stop-color="#38bdf8"/>
+      <stop offset="100%" stop-color="#3b82f6"/>
+    </linearGradient>
+
+    <!-- Gold gradient for the arrow accent -->
+    <linearGradient id="gold" x1="0" y1="0" x2="1" y2="1" gradientUnits="objectBoundingBox">
+      <stop offset="0%" stop-color="#fbbf24"/>
+      <stop offset="100%" stop-color="#d97706"/>
+    </linearGradient>
+
+    <!-- Soft glow -->
+    <filter id="glow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="1.5" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <!-- Gold glow -->
+    <filter id="goldGlow" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="1.2" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Rounded square background -->
+  <rect width="64" height="64" rx="14" fill="url(#bg)"/>
+
+  <!-- Subtle hexagon rings in background -->
+  <polygon
+    points="32,7 54,19.5 54,44.5 32,57 10,44.5 10,19.5"
+    fill="none" stroke="#38bdf8" stroke-width="0.8" opacity="0.12"
+  />
+  <polygon
+    points="32,12 49,21.5 49,42.5 32,52 15,42.5 15,21.5"
+    fill="none" stroke="#38bdf8" stroke-width="0.5" opacity="0.08"
+  />
+
+  <!-- ── "E" shape made of bars ────────────────────── -->
+
+  <!-- Vertical bar (left spine of E) -->
+  <rect x="19" y="16" width="7" height="32" rx="2.5" fill="url(#blue)" filter="url(#glow)"/>
+
+  <!-- Top horizontal bar of E (gold accent) -->
+  <rect x="27" y="16" width="18" height="7" rx="2.5" fill="url(#gold)" filter="url(#goldGlow)"/>
+
+  <!-- Middle horizontal bar of E (shorter) -->
+  <rect x="27" y="28.5" width="13" height="6" rx="2.5" fill="url(#blue)" filter="url(#glow)"/>
+
+  <!-- Bottom horizontal bar of E -->
+  <rect x="27" y="41" width="18" height="7" rx="2.5" fill="url(#blue)" filter="url(#glow)"/>
+
+
+  <!-- Connector dots at bar joints -->
+  <circle cx="26" cy="19.5" r="1.4" fill="#ffffff" opacity="0.6"/>
+  <circle cx="26" cy="31.5" r="1.4" fill="#ffffff" opacity="0.45"/>
+  <circle cx="26" cy="44.5" r="1.4" fill="#ffffff" opacity="0.35"/>
 </svg>
