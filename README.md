@@ -2,7 +2,7 @@
 
 <div align="center">
 
-[![Developer Hub Preview](https://github.com/user-attachments/assets/7c83a2e2-32d0-4392-823c-5c838e5b432a)](https://eduardferre.dev)
+[![Developer Hub Preview](https://github.com/user-attachments/assets/d40d3786-290b-442e-8240-363a055000ca)](https://eduardferre.dev)
 
 [![Live Site](https://img.shields.io/badge/Live_Site-eduardferre.dev-C8FF40?style=flat&logo=astro&logoColor=black)](https://eduardferre.dev)
 ![Astro](https://img.shields.io/badge/Astro_5-FF5D01?style=flat&logo=astro&logoColor=white)
