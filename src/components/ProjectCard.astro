@@ -1,0 +1,172 @@
+---
+interface Project {
+  id: string;
+  title: string;
+  description: string;
+  url: string;
+  tag: string;
+  color: string;
+  icon: string;
+  status: 'live' | 'wip';
+  tech: string[];
+  featured: boolean;
+}
+
+interface Props {
+  project: Project;
+  index?: number;
+}
+
+const { project, index = 0 } = Astro.props;
+const isLive = project.status === 'live';
+---
+
+<a
+  href={project.url}
+  target="_blank"
+  rel="noopener noreferrer"
+  class:list={[
+    'card group relative block rounded-2xl p-6 overflow-hidden',
+    'transition-all duration-300 ease-out',
+    'animate-fade-up',
+    { 'lg:col-span-2': project.featured },
+  ]}
+  style={`
+    --card-color: ${project.color};
+    animation-delay: ${index * 120}ms;
+  `}
+>
+  <!-- Top accent line — glows on hover -->
+  <div class="accent-line absolute top-0 left-0 right-0 h-px transition-all duration-500" />
+
+  <!-- Ghost icon -->
+  <span
+    class="ghost-icon absolute top-4 right-5 font-display font-extrabold text-4xl select-none pointer-events-none
+           transition-all duration-500 opacity-[0.1] group-hover:opacity-[0.22] group-hover:scale-110 origin-top-right"
+  >
+    {project.icon}
+  </span>
+
+  <!-- Content -->
+  <div class="relative z-10 flex flex-col h-full min-h-[180px]">
+
+    <!-- Tag -->
+    <div class="flex items-center gap-2 mb-5">
+      <span class="tag-dot w-1.5 h-1.5 rounded-full shrink-0" />
+      <span class="tag-label font-mono text-[10px] tracking-[0.25em] uppercase font-bold">
+        {project.tag}
+      </span>
+    </div>
+
+    <!-- Title -->
+    <h2 class="font-display font-extrabold text-xl md:text-2xl leading-tight mb-3 title transition-colors duration-200">
+      {project.title}
+    </h2>
+
+    <!-- Description -->
+    <p data-i18n={`desc-${project.id}`}
+       class="font-mono text-[11px] md:text-xs leading-relaxed mb-6 max-w-prose description">
+      {project.description}
+    </p>
+
+    <!-- Footer -->
+    <div class="mt-auto flex items-center justify-between gap-3">
+
+      <!-- Tech tags -->
+      <div class="flex flex-wrap gap-1.5">
+        {project.tech.map((t) => (
+          <span class="tech-tag font-mono text-[9px] md:text-[10px] px-2 py-0.5 rounded border transition-colors duration-200">
+            {t}
+          </span>
+        ))}
+      </div>
+
+      <!-- Status + Arrow -->
+      <div class="flex items-center gap-3 shrink-0">
+        <span
+          class:list={[
+            'font-mono text-[9px] md:text-[10px] tracking-widest uppercase px-2 py-0.5 rounded border',
+            isLive
+              ? 'text-emerald-600 border-emerald-500/30 bg-emerald-500/[0.08] dark:text-emerald-400 dark:border-emerald-400/20 dark:bg-emerald-400/[0.06]'
+              : 'text-orange-600 border-orange-500/30 bg-orange-500/[0.08] dark:text-orange-400 dark:border-orange-400/20 dark:bg-orange-400/[0.06]',
+          ]}
+        >
+          {isLive ? '● live' : '○ wip'}
+        </span>
+
+        <span class="arrow font-mono text-sm transition-all duration-200 group-hover:translate-x-1 inline-block description">
+          →
+        </span>
+      </div>
+    </div>
+  </div>
+</a>
+
+<style>
+  /* Card shell — adapts to light/dark via CSS vars */
+  .card {
+    background-color: var(--bg-card);
+    border: 1px solid var(--border);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+  }
+
+  .card:hover {
+    border-color: var(--border-hover);
+    transform: translateY(-2px);
+    box-shadow:
+      0 8px 24px rgba(0, 0, 0, 0.08),
+      0 0 60px color-mix(in srgb, var(--card-color) 8%, transparent);
+  }
+
+  html.dark .card:hover {
+    box-shadow:
+      0 0 0 1px rgba(255, 255, 255, 0.04) inset,
+      0 24px 48px rgba(0, 0, 0, 0.5),
+      0 0 80px color-mix(in srgb, var(--card-color) 6%, transparent);
+  }
+
+  /* Accent top line */
+  .accent-line {
+    background: linear-gradient(
+      90deg,
+      transparent,
+      color-mix(in srgb, var(--card-color) 35%, transparent),
+      transparent
+    );
+  }
+
+  .group:hover .accent-line {
+    background: linear-gradient(
+      90deg,
+      transparent,
+      color-mix(in srgb, var(--card-color) 75%, transparent),
+      transparent
+    );
+    box-shadow: 0 0 12px color-mix(in srgb, var(--card-color) 35%, transparent);
+  }
+
+  /* Elements using card color */
+  .tag-dot   { background-color: var(--card-color); }
+  .tag-label { color: var(--card-color); }
+  .ghost-icon{ color: var(--card-color); }
+
+  /* Text colors via CSS vars */
+  .title       { color: var(--text-primary); }
+  .description { color: var(--text-muted); }
+
+  .group:hover .title {
+    color: var(--text-primary);
+    filter: brightness(1.1);
+  }
+
+  /* Tech tags */
+  .tech-tag {
+    background-color: color-mix(in srgb, var(--text-primary) 4%, transparent);
+    border-color: var(--border);
+    color: var(--text-muted);
+  }
+
+  .group:hover .tech-tag {
+    border-color: var(--border-hover);
+  }
+</style>
