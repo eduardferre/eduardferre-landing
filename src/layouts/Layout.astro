@@ -5,9 +5,34 @@ interface Props {
 }
 
 const {
-  title = 'Eduard Ferré — Developer Hub',
-  description = 'Developer Hub by Eduard Ferré. Software & Data Engineer.',
+  title = 'Eduard Ferré — Software & Data Engineer',
+  description = "Eduard Ferré's developer hub — Software & Data Engineer building tools that actually work. Explore projects in web development, data engineering, and fintech.",
 } = Astro.props;
+
+const canonicalURL = new URL(Astro.url.pathname, 'https://eduardferre.dev');
+const ogImage = 'https://eduardferre.dev/og-image.png';
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'Person',
+      '@id': 'https://eduardferre.dev/#person',
+      name: 'Eduard Ferré',
+      url: 'https://eduardferre.dev',
+      jobTitle: 'Software & Data Engineer',
+      image: 'https://eduardferre.dev/profile.png',
+    },
+    {
+      '@type': 'WebSite',
+      '@id': 'https://eduardferre.dev/#website',
+      name: 'Eduard Ferré — Developer Hub',
+      url: 'https://eduardferre.dev',
+      description,
+      publisher: { '@id': 'https://eduardferre.dev/#person' },
+    },
+  ],
+};
 ---
 
 <!doctype html>
@@ -16,7 +41,11 @@ const {
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content={description} />
+    <meta name="robots" content="index, follow" />
+    <meta name="theme-color" content="#07070A" media="(prefers-color-scheme: dark)" />
+    <meta name="theme-color" content="#F7F6F2" media="(prefers-color-scheme: light)" />
     <title>{title}</title>
+    <link rel="canonical" href={canonicalURL} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 
     <!-- Fonts -->
@@ -28,10 +57,26 @@ const {
     />
 
     <!-- Open Graph -->
+    <meta property="og:site_name" content="Eduard Ferré" />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://eduardferre.dev" />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Eduard Ferré — Developer Hub" />
+    <meta property="og:locale" content="en_US" />
+
+    <!-- Twitter / X Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+    <meta name="twitter:image:alt" content="Eduard Ferré — Developer Hub" />
+
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
 
     <!-- Anti-flash: apply theme before first paint -->
     <script is:inline>
