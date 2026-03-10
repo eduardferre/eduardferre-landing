@@ -6,7 +6,7 @@
 
 [![Live Site](https://img.shields.io/badge/Live_Site-eduardferre.dev-C8FF40?style=flat&logo=astro&logoColor=black)](https://eduardferre.dev)
 ![Astro](https://img.shields.io/badge/Astro_5-FF5D01?style=flat&logo=astro&logoColor=white)
-![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS_v3-06B6D4?style=flat&logo=tailwindcss&logoColor=white)
+![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS_v4-06B6D4?style=flat&logo=tailwindcss&logoColor=white)
 ![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=flat&logo=typescript&logoColor=white)
 ![pnpm](https://img.shields.io/badge/pnpm-F69220?style=flat&logo=pnpm&logoColor=white)
 
@@ -37,7 +37,7 @@ Personal developer hub built with **Astro 5**, **Tailwind CSS**, and **TypeScrip
 | Layer    | Technology                                              |
 | -------- | ------------------------------------------------------- |
 | Framework | [Astro 5](https://astro.build/)                        |
-| Styling  | [Tailwind CSS v3](https://tailwindcss.com/) + CSS vars  |
+| Styling  | [Tailwind CSS v4](https://tailwindcss.com/) + CSS vars  |
 | Language | TypeScript                                              |
 | Fonts    | Syne + Space Mono via Google Fonts                      |
 | SEO      | `@astrojs/sitemap` + manual JSON-LD                     |

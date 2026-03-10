@@ -1,0 +1,30 @@
+@import "tailwindcss";
+
+/* Class-based dark mode — mirrors darkMode: 'class' from v3 */
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  /* Custom font families */
+  --font-display: 'Syne', sans-serif;
+  --font-mono: 'Space Mono', Menlo, monospace;
+
+  /* Custom animations */
+  --animate-blink: blink 1.1s step-end infinite;
+  --animate-fade-up: fadeUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
+  --animate-ring-spin: ringSpin 5s linear infinite;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0; }
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes ringSpin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
