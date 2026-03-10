@@ -2,7 +2,7 @@
 
 > Personal developer hub at [eduardferre.dev](https://eduardferre.dev) — a "Linktree"-style landing page routing to projects and subdomains.
 
-[![Live](https://img.shields.io/badge/Live-eduardferre.dev-C8FF40?style=for-the-badge&logo=vercel&logoColor=black)](https://eduardferre.dev)
+[![Live](https://github.com/user-attachments/assets/7c83a2e2-32d0-4392-823c-5c838e5b432a)](https://eduardferre.dev)
 
 ![Project Screenshot](./public/og-image.png)
 
