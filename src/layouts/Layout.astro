@@ -7,8 +7,8 @@ interface Props {
 }
 
 const {
-  title = 'Eduard Ferré — Software & Data Engineer',
-  description = "Eduard Ferré's developer hub — Software & Data Engineer building tools that actually work. Explore projects in web development, data engineering, and fintech.",
+  title = 'Eduard Ferré — AI & Data Engineer',
+  description = "Eduard Ferré's developer hub — AI & Data Engineer building tools that actually work. Explore projects in AI, data engineering, web development, and fintech.",
 } = Astro.props;
 
 const canonicalURL = new URL(Astro.url.pathname, 'https://eduardferre.dev');
@@ -22,7 +22,7 @@ const jsonLd = {
       '@id': 'https://eduardferre.dev/#person',
       name: 'Eduard Ferré',
       url: 'https://eduardferre.dev',
-      jobTitle: 'Software & Data Engineer',
+      jobTitle: 'AI & Data Engineer',
       image: 'https://eduardferre.dev/profile.png',
     },
     {
@@ -150,13 +150,13 @@ const jsonLd = {
       // ── Language toggle ───────────────────────────────
       const TRANSLATIONS: Record<string, Record<string, string>> = {
         en: {
-          tagline:          'Software & Data Engineer. Building tools that actually work.',
+          tagline:          'AI & Data Engineer. Building tools that actually work.',
           section_projects: 'Projects',
           'desc-portfolio': 'Showcase of projects, skills and professional experience. Designed to tell a story, not just list technologies.',
           'desc-zenithfi':  'Financial app for personal investment management and real-time net worth tracking.',
         },
         es: {
-          tagline:          'Software & Data Engineer. Construyendo herramientas que realmente funcionan.',
+          tagline:          'AI & Data Engineer. Construyendo herramientas que realmente funcionan.',
           section_projects: 'Proyectos',
           'desc-portfolio': 'Showcase de proyectos, habilidades y experiencia como desarrollador. Diseñado para contar una historia, no solo listar tecnologías.',
           'desc-zenithfi':  'App financiera para gestión de inversiones personales y seguimiento de patrimonio neto en tiempo real.',

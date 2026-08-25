@@ -37,7 +37,7 @@ export const projects = [
     color: '#22D3EE',
     icon: '◎',
     status: 'live',
-    tech: ['Next.js', 'TypeScript', 'Supabase'],
+    tech: ['Next.js', 'React', 'TypeScript', 'Tailwind', 'Prisma', 'Supabase'],
     featured: false,
   },
 ];
