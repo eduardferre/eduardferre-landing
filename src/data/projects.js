@@ -32,7 +32,7 @@ export const projects = [
     title: 'ZenithFI',
     description:
       'Financial app for personal investment management and real-time net worth tracking.',
-    url: 'https://zenithfi.eduardferre.dev',
+    url: 'https://private.eduardferre.dev/zenithfi',
     tag: 'FinTech',
     color: '#22D3EE',
     icon: '◎',
