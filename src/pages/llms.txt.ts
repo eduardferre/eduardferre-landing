@@ -22,6 +22,7 @@ export const GET: APIRoute = () => {
     '- [GitHub](https://github.com/eduardferre)',
     '- [LinkedIn](https://www.linkedin.com/in/eduardferre)',
     '- [ORCID](https://orcid.org/0009-0003-3993-8186)',
+    '- [Google Scholar](https://scholar.google.com/citations?user=QzWcWCQAAAAJ)',
     '',
   ].join('\n');
   return new Response(body, { headers: { 'Content-Type': 'text/plain; charset=utf-8' } });
