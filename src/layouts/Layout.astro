@@ -12,7 +12,9 @@ const {
 } = Astro.props;
 
 const canonicalURL = new URL(Astro.url.pathname, 'https://eduardferre.dev');
-const ogImage = 'https://eduardferre.dev/og-image.png';
+// Square profile photo (1500×1500) until a 1200×630 social card exists.
+const ogImage = 'https://eduardferre.dev/profile.png';
+const PORTFOLIO = 'https://portfolio.eduardferre.dev/';
 
 const jsonLd = {
   '@context': 'https://schema.org',
@@ -21,16 +23,27 @@ const jsonLd = {
       '@type': 'Person',
       '@id': 'https://eduardferre.dev/#person',
       name: 'Eduard Ferré',
-      url: 'https://eduardferre.dev',
-      jobTitle: 'AI & Data Engineer',
+      alternateName: 'Edu Ferré',
+      url: 'https://eduardferre.dev/',
+      // The full profile (experience, credentials, publications) lives on the
+      // portfolio, which enriches this same @id.
+      mainEntityOfPage: PORTFOLIO,
+      jobTitle: 'AI / Data Engineer',
       image: 'https://eduardferre.dev/profile.png',
+      worksFor: { '@type': 'Organization', name: 'Carver Advanced Systems', url: 'https://carver-as.com' },
+      sameAs: [
+        'https://github.com/eduardferre',
+        'https://www.linkedin.com/in/eduardferre',
+        'https://orcid.org/0009-0003-3993-8186',
+      ],
     },
     {
       '@type': 'WebSite',
       '@id': 'https://eduardferre.dev/#website',
       name: 'Eduard Ferré — Developer Hub',
-      url: 'https://eduardferre.dev',
+      url: 'https://eduardferre.dev/',
       description,
+      inLanguage: 'en',
       publisher: { '@id': 'https://eduardferre.dev/#person' },
     },
   ],
@@ -49,6 +62,9 @@ const jsonLd = {
     <title>{title}</title>
     <link rel="canonical" href={canonicalURL} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="alternate" type="text/plain" title="llms.txt" href="/llms.txt" />
+    <link rel="me" href="https://github.com/eduardferre" />
+    <link rel="me" href="https://www.linkedin.com/in/eduardferre" />
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -65,13 +81,13 @@ const jsonLd = {
     <meta property="og:type" content="website" />
     <meta property="og:url" content={canonicalURL} />
     <meta property="og:image" content={ogImage} />
-    <meta property="og:image:width" content="1200" />
-    <meta property="og:image:height" content="630" />
+    <meta property="og:image:width" content="1500" />
+    <meta property="og:image:height" content="1500" />
     <meta property="og:image:alt" content="Eduard Ferré — Developer Hub" />
     <meta property="og:locale" content="en_US" />
 
     <!-- Twitter / X Card -->
-    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:card" content="summary" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={ogImage} />
