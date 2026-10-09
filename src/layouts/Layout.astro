@@ -12,8 +12,8 @@ const {
 } = Astro.props;
 
 const canonicalURL = new URL(Astro.url.pathname, 'https://eduardferre.dev');
-// Square profile photo (1500×1500) until a 1200×630 social card exists.
-const ogImage = 'https://eduardferre.dev/profile.png';
+// Social card (1200×630) for link previews; profile.png stays the schema image.
+const ogImage = 'https://eduardferre.dev/og-image.jpg';
 const PORTFOLIO = 'https://portfolio.eduardferre.dev/';
 
 const jsonLd = {
@@ -82,13 +82,13 @@ const jsonLd = {
     <meta property="og:type" content="website" />
     <meta property="og:url" content={canonicalURL} />
     <meta property="og:image" content={ogImage} />
-    <meta property="og:image:width" content="1500" />
-    <meta property="og:image:height" content="1500" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
     <meta property="og:image:alt" content="Eduard Ferré — Developer Hub" />
     <meta property="og:locale" content="en_US" />
 
     <!-- Twitter / X Card -->
-    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={ogImage} />
